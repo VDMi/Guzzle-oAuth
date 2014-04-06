@@ -3,7 +3,33 @@ Guzzle-oAuth
 
 Guzzle oAuth is a oAuth 1 and oAuth 2 library based on Guzzle with the big four (google, linkedin, twitter, facebook) baked in.
 
-### Example with other provider.
+### Installing via Composer
+
+The recommended way to install Guzzle oAuth is through
+[Composer](http://getcomposer.org).
+
+```bash
+# Install Composer
+curl -sS https://getcomposer.org/installer | php
+```
+
+Next, update your project's composer.json file to include Guzzle oAuth:
+
+```javascript
+{
+    "require": {
+        "vdmi/guzzle-oauth": ">=0.0.1"
+    }
+}
+```
+
+After installing, you need to require Composer's autoloader:
+
+```php
+require 'vendor/autoload.php';
+```
+
+### Example with other provider
 See https://github.com/FransvanderMeer/Guzzle-oAuth-Meetup for an example that uses another provider then one of the big four. The example is an implementation of meetup.com as provider.
 
 ### Usage
