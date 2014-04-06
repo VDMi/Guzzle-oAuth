@@ -3,7 +3,13 @@ Guzzle-oAuth
 
 Guzzle oAuth is a oAuth 1 and oAuth 2 library based on Guzzle with the big four (google, linkedin, twitter, facebook) baked in.
 
+### Example with other provider.
+See https://github.com/FransvanderMeer/Guzzle-oAuth-Meetup for an example that uses another provider then one of the big four. The example is an implementation of meetup.com as provider.
+
 ### Usage
+Guzzle oAuth makes the flow to authorize and the user info abstract. That means that you can use the same code for all providers to authorize, get an access token and get the account information.
+
+Send user to provider.
 ```php
 // Authorize flow, send user to provider to authorize
 $config = array(
@@ -35,6 +41,7 @@ $_SESSION['REQUEST_TOKEN_' . $provider] = serialize($request_token);
 header('Location: ' . $url);
 exit;
 ```
+On the callback router
 ```php
 // Return (callback) after authorize
 // In our example we are on $callback_uri (http://test.com/callback/uri)
@@ -60,6 +67,7 @@ $access_token = $client->getAccessToken($_GET, $request_token);
 unset($_SESSION['REQUEST_TOKEN_' . $provider]);
 $_SESSION['ACCESS_TOKEN_' . $provider] = serialize($access_token);
 ```
+When we have a valid access token
 ```php
 // Now that we have an access token, do calls to facebook
 $provider = 'facebook';
