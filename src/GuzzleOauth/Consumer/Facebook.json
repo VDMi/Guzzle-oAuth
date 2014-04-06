@@ -1,0 +1,47 @@
+{
+    "name": "Facebook",
+    "apiVersion": "1.0",
+    "baseUrl": "https://graph.facebook.com",
+    "description": "Facebook REST API client",
+
+    "operations": {
+       "getUserInfo": {
+            "httpMethod": "GET",
+            "uri": "me",
+            "summary": "Returns the account info for the authenticating user.",
+            "responseClass": "JsonOutput",
+            "parameters": {
+               "command.expects": {
+                  "type": "string",
+                  "default": "application/json"
+                }
+            },
+            "additionalParameters": {
+                "location": "query"
+            }
+        },
+       "getAllAccountInfo": {
+            "httpMethod": "GET",
+            "uri": "me/accounts",
+            "summary": "Returns all accounts info (pages) for the authenticating user.",
+            "responseClass": "JsonOutput",
+            "parameters": {
+               "command.expects": {
+                  "type": "string",
+                  "default": "application/json"
+                }
+            },
+            "additionalParameters": {
+                "location": "query"
+            }
+        }
+    },
+    "models": {
+        "JsonOutput": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}

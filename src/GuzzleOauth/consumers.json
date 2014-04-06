@@ -1,0 +1,43 @@
+{
+    "class": "\\GuzzleOauth\\Service\\Builder\\ServiceBuilder",
+    "services": {
+        "twitter": {
+            "class": "\\GuzzleOauth\\Consumer\\Twitter",
+            "params": {
+                "base_url": "https://api.twitter.com/1.1",
+                "authorize_path": "oauth/authenticate",
+                "param_user_id": "id_str"
+            }
+        },
+        "facebook": {
+            "class": "\\GuzzleOauth\\Consumer\\Facebook",
+            "params": {
+                "base_url": "https://graph.facebook.com",
+                "authorize_path": "dialog/oauth",
+                "param_user_id": "id"
+            }
+        },
+        "google": {
+            "class": "\\GuzzleOauth\\Consumer\\Google",
+            "params": {
+                "base_url": "https://www.googleapis.com",
+                "authorize_path": "o/oauth2/auth",
+                "access_token_path": "o/oauth2/token",
+                "scope_delimiter": " ",
+                "param_user_id": "id",
+                "param_user_label": "displayName"
+            }
+        },
+        "linkedin": {
+            "class": "\\GuzzleOauth\\Consumer\\LinkedIn",
+            "params": {
+                "base_url": "https://api.linkedin.com/v1",
+                "authorize_path": "uas/oauth2/authorization",
+                "access_token_path": "uas/oauth2/accessToken",
+                "param_user_id": "id",
+                "param_user_label": "formattedName",
+                "param_user_email": "emailAddress"
+            }
+        }
+    }
+}

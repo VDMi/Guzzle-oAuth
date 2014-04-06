@@ -1,0 +1,25 @@
+{
+    "name": "LinkedIn",
+    "apiVersion": "1.0",
+    "baseUrl": "https://api.linkedin.com/v1",
+    "description": "LinkedIn REST API client",
+    "operations": {
+       "getUserInfo": {
+            "httpMethod": "GET",
+            "uri": "people/~:(id,first-name,last-name,maiden-name,formatted-name,email-address,headline,location,industry,current-share,num-connections,picture-url,public-profile-url)",
+            "summary": "Returns the account info for the authenticating user.",
+            "responseClass": "JsonOutput",
+            "additionalParameters": {
+                "location": "query"
+            }
+        }
+    },
+    "models": {
+        "JsonOutput": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}

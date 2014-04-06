@@ -1,0 +1,25 @@
+{
+    "name": "Google",
+    "apiVersion": "1.0",
+    "baseUrl": "https://www.googleapis.com",
+    "description": "Google REST API client",
+    "operations": {
+       "getUserInfo": {
+            "httpMethod": "GET",
+            "uri": "plus/v1/people/me",
+            "summary": "Returns the account info for the authenticating user.",
+            "responseClass": "JsonOutput",
+            "additionalParameters": {
+                "location": "query"
+            }
+        }
+    },
+    "models": {
+        "JsonOutput": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}

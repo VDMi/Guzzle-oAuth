@@ -1,0 +1,34 @@
+{
+    "name": "Twitter",
+    "apiVersion": "1.1",
+    "baseUrl": "https://api.twitter.com/1.1",
+    "description": "Twitter REST API client",
+    "operations": {
+       "getUserInfo": {
+            "httpMethod": "GET",
+            "uri": "account/verify_credentials.json",
+            "summary": "Returns the account info for the authenticating user.",
+            "responseClass": "JsonOutput",
+            "additionalParameters": {
+                "location": "query"
+            }
+        },
+        "getMentions": {
+            "httpMethod": "GET",
+            "uri": "statuses/mentions_timeline.json",
+            "summary": "Returns the 20 most recent mentions for the authenticating user.",
+            "responseClass": "JsonOutput",
+            "additionalParameters": {
+                "location": "query"
+            }
+        }
+    },
+    "models": {
+        "JsonOutput": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}
