@@ -1,7 +1,7 @@
 {
     "name": "vdmi/guzzle-oauth",
     "type": "library",
-    "description": "An oAuth 1 and oAuth 2 library based on Guzzle with the big four (google, linkedin, twitter, facebook) backed in.",
+    "description": "An oAuth 1 and oAuth 2 library based on Guzzle with the big four (google, linkedin, twitter, facebook) baked in.",
     "keywords": ["guzzle","oauth","oauth1","oauth2","facebook","google","linkedin","twitter","rest"],
     "homepage": "http://github.com/VDMi/Guzzle-oAuth",
     "license": "MIT",
