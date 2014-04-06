@@ -27,14 +27,16 @@ $callback_uri = 'http://test.com/callback/uri';
 $state = '--some-random-string--'; //optional
 
 // oAuth2 does not use request tokens, we use it here to be consistent with oAuth1
-// This makes it possible to replace 'facebook' with 'twitter' in $provider without changing the code.
+// This makes it possible to replace 'facebook' with 'twitter' in $provider without
+// changing the code.
 $request_token = $client->getRequestToken($callback_uri);
 
 // get the redirect url
 $url = $client->getAuthorizeUrl($request_token, $callback_uri, $state);
 
 // Note!
-// You need to store $request_token (and $state) in a session or db, so that you can pickit up on return.
+// You need to store $request_token (and $state) in a session or db, so that you can
+// pickit up on return.
 $_SESSION['REQUEST_TOKEN_' . $provider] = serialize($request_token);
 
 // send the user to facebook to login and authorize your app.
