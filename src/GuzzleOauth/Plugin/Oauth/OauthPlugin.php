@@ -6,6 +6,8 @@ use Guzzle\Plugin\Oauth\OauthPlugin as OauthPluginOriginal;
 use Guzzle\Common\Event;
 use Guzzle\Http\Message\RequestInterface;
 use Guzzle\Common\Collection;
+use Guzzle\Http\Message\EntityEnclosingRequestInterface;
+
 
 /**
  * Adapted version.
@@ -78,8 +80,7 @@ class OauthPlugin extends OauthPluginOriginal
     // Add POST fields to signing string
     if (!$this->config->get('disable_post_params') &&
         $request instanceof EntityEnclosingRequestInterface &&
-        (string) $request->getHeader('Content-Type') == 'application/x-www-form-urlencoded') {
-
+        false !== strpos($request->getHeader('Content-Type'), 'application/x-www-form-urlencoded')) {
         $params->merge($request->getPostFields());
     }
 
