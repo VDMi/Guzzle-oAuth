@@ -31,9 +31,9 @@
         "linkedin": {
             "class": "\\GuzzleOauth\\Consumer\\LinkedIn",
             "params": {
-                "base_url": "https://api.linkedin.com/v1",
-                "authorize_path": "uas/oauth2/authorization",
-                "access_token_path": "uas/oauth2/accessToken",
+                "base_url": "https://api.linkedin.com",
+                "authorize_path": "oauth/v2/authorization",
+                "access_token_path": "oauth/v2/accessToken",
                 "param_user_id": "id",
                 "param_user_label": "formattedName",
                 "param_user_email": "emailAddress"
