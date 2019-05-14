@@ -4,7 +4,6 @@ namespace GuzzleOauth\Consumer;
 
 use GuzzleOauth\BaseConsumerOauth2;
 use Guzzle\Common\Event;
-use Guzzle\Common\Collection;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class LinkedIn extends BaseConsumerOauth2 {
@@ -53,6 +52,53 @@ class LinkedIn extends BaseConsumerOauth2 {
     return $return;
   }
 
+    /**
+     * Retrieves the full name of the user.
+     *
+     * @param null $info the user info as an instance of Guzzle\Service\Resource\Model
+     *
+     * @return string the name.
+     */
+  public function getUserLabel($info = NULL) {
+    if (empty($info)) {
+      $info = $this->getUserInfo();
+    }
+    return $info->get('localizedFirstName') . ' ' . $info->get('localizedLastName');
+  }
+
+    /**
+     * Retrieves the email address of the user
+     * @param null $info
+     *
+     * @return mixed the email address, otherwise <code>FALSE</code>.
+     */
+  public function getUserEmail($info = NULL) {
+    $response = $this->get('emailAddress?q=members&projection=(elements*(handle~))')->send();
+    if($response->getStatusCode() !== 200 || empty($response)) {
+      return FALSE;
+    }
+    $result = $response->json();
+    return $result['elements'][0]['handle~'][$this->getConfig('param_user_email')];
+  }
+
+    /**
+     * Retrieves the URL of the profile picture.
+     *
+     * @param null $info the user info as an instance of Guzzle\Service\Resource\Model
+     *
+     * @return mixed the url, otherwise <code>FALSE</code>.
+     */
+  public function getProfilePicture($info = NULL) {
+    if (empty($info)) {
+      $info = $this->getUserInfo();
+    }
+
+    if($profilePicture = (array) $info->get('profilePicture') && !empty($profilePicture)) {
+        return $profilePicture['displayImage~']['elements'][0]['identifiers'][0]['identifier'];
+    }
+
+    return FALSE;
+  }
 }
 
 
