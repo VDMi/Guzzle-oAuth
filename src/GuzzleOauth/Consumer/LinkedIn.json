@@ -6,7 +6,7 @@
     "operations": {
        "getUserInfo": {
             "httpMethod": "GET",
-            "uri": "me?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))",
+            "uri": "me?projection=(id,localizedFirstName,localizedLastName,profilePicture(displayImage~:playableStreams))",
             "summary": "Returns the account info for the authenticating user.",
             "responseClass": "JsonOutput",
             "additionalParameters": {
